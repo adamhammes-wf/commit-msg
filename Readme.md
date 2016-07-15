@@ -1,4 +1,4 @@
-# A commit message hook for Datatables
+# A Commit Message Hook for Datatables
 
 ## Installation
 
