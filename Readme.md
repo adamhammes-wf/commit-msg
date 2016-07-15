@@ -30,3 +30,8 @@ $ curl -O https://raw.githubusercontent.com/adamhammes-wf/commit-msg/master/comm
 $ chmod +x commit-msg.py
 ```
 
+## Testing
+
+```bash
+$ python tests.py
+```
