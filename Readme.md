@@ -1,3 +1,5 @@
+![](https://travis-ci.org/adamhammes-wf/commit_msg.svg?branch=master)
+
 # A Commit Message Hook for Datatables
 
 ## Example Commit Message
