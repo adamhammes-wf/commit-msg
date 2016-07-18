@@ -2,7 +2,7 @@
 import re
 import sys
 
-missing_parts_message = (
+MISSING_PARTS_MESSAGE = (
     'A commit message consists of the following parts, separated by blank lines:\n'
     '	1. A short summary of the changes\n'
     '	2. A more detailed description, if necessary\n'
@@ -11,39 +11,39 @@ missing_parts_message = (
 
 MAX_SUMMARY_LENGTH = 50
 
-too_long_summary = (
+TOO_LONG_SUMMARY = (
     'Please keep the commit summary to at most {0} characters.'.format(MAX_SUMMARY_LENGTH))
 
 MULTILINE_SUMMARY = (
     'Summaries may not be more than one line.')
 
-summary_ends_with_period = 'Summaries may not end with punctuation.'
+SUMMARY_ENDS_WITH_PERIOD = 'Summaries may not end with punctuation.'
 
-ticket_matcher = r'^DT-\d{1,5}$'
+TICKET_MATCHER = r'^DT-\d{1,5}$'
 
-invalid_ticket = (
-    'Invalid ticket. Tickets must match the pattern \'{0}\'.'.format(ticket_matcher))
+INVALID_TICKET = (
+    'Invalid ticket. Tickets must match the pattern \'{0}\'.'.format(TICKET_MATCHER))
 
 MAX_LINE_LENGTH = 72
 
-line_too_long = (
+LINE_TOO_LONG = (
     'Lines in the description must be at most {0} characters long'.format(MAX_LINE_LENGTH))
 
 
 def verify_summary(summary):
     if len(summary) > MAX_SUMMARY_LENGTH:
-        return too_long_summary
+        return TOO_LONG_SUMMARY
 
     if summary[-1] in '?!.,':
-        return summary_ends_with_period
+        return SUMMARY_ENDS_WITH_PERIOD
 
     if '\n' in summary:
         return MULTILINE_SUMMARY
 
 
 def verify_ticket(ticket):
-    if not re.match(ticket_matcher, ticket):
-        return invalid_ticket
+    if not re.match(TICKET_MATCHER, ticket):
+        return INVALID_TICKET
 
 
 def verify_description(paragraphs):
@@ -51,14 +51,14 @@ def verify_description(paragraphs):
              for line in paragraph.split('\n')]
 
     if any([len(line) > MAX_LINE_LENGTH for line in lines]):
-        return line_too_long
+        return LINE_TOO_LONG
 
 
 def verify_message(message):
     parts = message.split('\n\n')
 
     if len(parts) < 2:
-        return missing_parts_message
+        return MISSING_PARTS_MESSAGE
 
     summary = parts[0]
     ticket = parts[-1]
