@@ -3,7 +3,8 @@ import re
 import sys
 
 MISSING_PARTS_MESSAGE = (
-    'A commit message consists of the following parts, separated by blank lines:\n'
+    'A commit message should consist of the following parts, separated by\n'
+    'blank lines:\n'
     '	1. A short summary of the changes\n'
     '	2. A more detailed description, if necessary\n'
     '	3. The Jira ticket number'
@@ -12,7 +13,8 @@ MISSING_PARTS_MESSAGE = (
 MAX_SUMMARY_LENGTH = 50
 
 TOO_LONG_SUMMARY = (
-    'Please keep the commit summary to at most {0} characters.'.format(MAX_SUMMARY_LENGTH))
+    'Please keep the commit summary to at most {0} characters.'
+    .format(MAX_SUMMARY_LENGTH))
 
 MULTILINE_SUMMARY = (
     'Summaries may not be more than one line.')
@@ -22,12 +24,14 @@ SUMMARY_ENDS_WITH_PERIOD = 'Summaries may not end with punctuation.'
 TICKET_MATCHER = r'^DT-\d{1,5}$'
 
 INVALID_TICKET = (
-    'Invalid ticket. Tickets must match the pattern \'{0}\'.'.format(TICKET_MATCHER))
+    'Invalid ticket. Tickets must match the pattern \'{0}\'.'
+    .format(TICKET_MATCHER))
 
 MAX_LINE_LENGTH = 72
 
 LINE_TOO_LONG = (
-    'Lines in the description must be at most {0} characters long'.format(MAX_LINE_LENGTH))
+    'Lines in the description must be at most {0} characters long'
+    .format(MAX_LINE_LENGTH))
 
 
 def verify_summary(summary):
